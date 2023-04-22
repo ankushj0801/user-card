@@ -26,7 +26,7 @@ const App = () => {
     <div>
       <Navbar handleGetUsers={handleGetUsers} />
       {isLoading ? (
-        <div className="loader">Loading...</div>
+        <div className="loader"></div>
       ) : (
         <div className="card-grid">
           {users && users.map(user => (
