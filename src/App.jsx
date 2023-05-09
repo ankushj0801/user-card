@@ -7,16 +7,17 @@ import "./style.css";
 const App = () => {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  
+  const [pageNumber, setPageNumber] = useState(1);
   const handleGetUsers = () => {
     setIsLoading(true);
     // setUsers([]);
-    axios.get('https://reqres.in/api/users?page=1').then((response) => {
+    axios.get(`https://reqres.in/api/users?page=${pageNumber}`).then((response) => {
         console.log(response.data);
         setUsers(response.data.data);
     }).catch((err) => {
       console.log(err.message);
     });
+    if(pageNumber === 2) {setPageNumber(1)}else{setPageNumber(pageNumber + 1)}
     setIsLoading(false);
   };
   
